@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans>
+		<form-bean name='Emp'
+			type='com.yash.technology.form.Employee'></form-bean>
+
+		<form-bean name='EmpLogin'
+			type="com.yash.technology.form.LoginForm"></form-bean>
+
+		<form-bean name='EmpDelete'
+			type="com.yash.technology.form.EmployeeDeleteForm"></form-bean>
+			
+	<form-bean name='deptInfo' type='com.yash.technology.form.Department'></form-bean>
+			
+	</form-beans>
+
+	<action-mappings>
+		<action name='Emp'
+			type='com.yash.technology.action.FirstAction' path='/add'>
+			<forward name='success' path='/tiles/Home.jsp'></forward>
+			<forward name='failure' path='/AdminLogin.jsp'></forward>
+		</action>
+		<action path="/tileact"
+			type="com.yash.technology.action.TileAction">
+			<forward name='add' path='add'></forward>
+			<forward name='all' path='all'></forward>
+			<forward name='getDepartments' path='getDepartments'></forward>
+			<forward name='displayEmp' path='displayEmp'></forward>
+			<forward name='updateEmp' path='updateEmp'></forward>
+			<forward name='failure' path='/AdminLogin.jsp'></forward>
+		</action>
+		
+		<action name= "EmpLogin"
+			type="com.yash.technology.action.EmployeeLoginAction"
+			path="/employeeLogin">
+			<forward name='success' path="/employeeHomePage.jsp"></forward>
+			<forward name='failure' path='/EmployeeLogin.jsp'></forward>
+		</action>
+
+
+		<action name="EmpDelete"
+			type="com.yash.technology.action.EmployeeDeleteAction"
+			path="/employeeDelete">
+			<forward name='success' path="/tiles/Home.jsp"></forward>
+			<forward name='failure' path='/AdminLogin.jsp'></forward>
+
+		</action>
+
+		<!-- Admin action mapping -->
+
+		<action name="EmpLogin"
+			type="com.yash.technology.action.AdminLoginAction" path="/adminLogin">
+			<forward name='success' path="/tiles/Home.jsp"></forward>
+			<forward name='failure' path='/AdminLogin.jsp'></forward>
+		</action>
+
+<action name="deptInfo"
+			type="com.yash.technology.action.GetDepartmentInfo" path="/getDeptInfo">
+			<forward name='success' path="/tiles/departments.jsp"></forward>
+			<forward name='failure' path='/AdminLogin.jsp'></forward>
+		</action>
+
+
+<action name="Emp"
+			type="com.yash.technology.action.EmployeeUpdateAction" path="/updateEmpAction">
+			<forward name='success' path="/tileact.do?parameter=getDepartments"></forward>
+			
+		</action>
+
+	</action-mappings>
+	 
+	<controller
+		processorClass="org.apache.struts.tiles.TilesRequestProcessor" />
+	  
+
+	 
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		      
+		  
+		<set-property property="definitions-config"
+			value="/WEB-INF/tiles-defs.xml" />
+		    
+		    
+		<set-property property="moduleAware" value="true" />
+		 
+		   
+	</plug-in>
+	 
+</struts-config>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+
+<!--
+     This is a blank Tiles definition file with a commented example.
+-->
+
+<tiles-definitions>
+
+     <definition name="baseLayout"   page="/tiles/layout.jsp">
+        <put name="header"   value="/tiles/header.jsp" />
+        <put name="body"   value="/tiles/body.jsp" />
+    </definition>
+     
+     <definition name="add"  extends="baseLayout">
+        <put name="body"   value="/tiles/addEmployee.jsp" />      
+    </definition>
+
+     <definition name="all"  extends="baseLayout">
+        <put name="body"   value="/tiles/menu.jsp" />      
+    </definition>
+     
+     <definition name="getDepartments"  extends="baseLayout">
+        <put name="body"   value="/tiles/departments.jsp" />      
+    </definition>
+    
+    <definition name="displayEmp"  extends="baseLayout">
+        <put name="body"   value="/tiles/displayEmployee.jsp" />      
+    </definition>
+   
+    <definition name="updateEmp"  extends="baseLayout">
+        <put name="body"   value="/tiles/updateEmployee.jsp" />      
+    </definition>
+     
+     
+</tiles-definitions>
